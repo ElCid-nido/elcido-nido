@@ -34,7 +34,7 @@ function renderMsg(text, who='bot'){
     avatar.textContent = '🙂';
   } else {
     const img = document.createElement('img');
-    img.src = './cido_nido.jpg';   // tuo file immagine
+    img.src = './cido_nido.png';   // tuo file immagine
     img.alt = 'Bot';
     img.style.width = '100%';
     img.style.height = '100%';
