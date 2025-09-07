@@ -34,6 +34,11 @@
 
     <main id="chat" aria-live="polite" aria-label="Conversazione"></main>
 
+    <div id="typing" class="typing hidden" aria-live="polite">
+      <span class="avatar">🐾</span>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+
     <form id="inputForm" autocomplete="off" novalidate>
       <input id="q" name="q" type="text" maxlength="200" placeholder="Scrivi una domanda (es. 'reti per gatti')" />
       <button type="submit" class="send">Invia</button>
