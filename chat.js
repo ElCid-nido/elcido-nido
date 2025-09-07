@@ -16,7 +16,7 @@ const WORKER_URL = "https://aurypet.spmighi.workers.dev/";
     fetch('./business.json', {cache:'no-store'}).then(r=>r.json())
   ]);
   KB = faq; BIZ = biz;
-  renderBot('Ciao! Posso aiutarti con orari, indirizzo, contatti, reti per gatti, manutenzione acquari e dieta BARF. Prova: “rete per gatti balcone”.');
+  renderBot('Ciao! Posso aiutarti con orari, indirizzo, contatti, reti per gatti, manutenzione acquari e dieta BARF. Prova: “rete per gatti balcone”. Powered by ElCido-Nido Chatbot.');
 })();
 
 function renderMsg(text, who='bot'){
