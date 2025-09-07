@@ -5,6 +5,7 @@ const chat = $('#chat');
 const inputForm = $('#inputForm');
 const qInput = $('#q');
 const leadForm = $('#leadForm');
+const typing = document.getElementById('typing');
 
 let KB = [], BIZ = null, lastSubmitAt = 0;
 const RATE_LIMIT_MS = 60000;
@@ -19,13 +20,25 @@ const WORKER_URL = "https://aurypet.spmighi.workers.dev/";
   renderBot('Ciao! Posso aiutarti con orari, indirizzo, contatti, reti per gatti, manutenzione acquari e dieta BARF. Prova: “rete per gatti balcone”. Powered by ElCido-Nido Chatbot.');
 })();
 
+function showTyping(){ typing.classList.remove('hidden'); }
+
+function hideTyping(){ typing.classList.add('hidden'); }
+
 function renderMsg(text, who='bot'){
   const wrap = document.createElement('div');
   wrap.className = `msg ${who==='user'?'user':'bot'}`;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.textContent = who === 'user' ? '🙂' : '🐾';
+
   const b = document.createElement('div');
   b.className = 'bubble';
   b.textContent = text;
-  wrap.appendChild(b);
+
+  if (who === 'user') { wrap.appendChild(b); wrap.appendChild(avatar); }
+  else { wrap.appendChild(avatar); wrap.appendChild(b); }
+
   chat.appendChild(wrap);
   chat.scrollTop = chat.scrollHeight;
 }
@@ -66,10 +79,14 @@ function search(q){
   return res;
 }
 
-function handleQuery(q){
+async function handleQuery(q){
   if(!q || !q.trim()) return;
   renderMsg(q.trim(), 'user');
+  // mostra puntini per un feeling "realtime"
+  showTyping();
+  await new Promise(r => setTimeout(r, 220)); // leggero delay "umano"
   const hits = search(q);
+  hideTyping();
   if(hits.length){
     const seen = new Set();
     hits.forEach(item => { if(!seen.has(item.id)) { renderAnswer(item); seen.add(item.id); } });
