@@ -30,7 +30,17 @@ function renderMsg(text, who='bot'){
 
   const avatar = document.createElement('div');
   avatar.className = 'avatar';
-  avatar.textContent = who === 'user' ? '🙂' : '🐾';
+  if (who === 'user') {
+    avatar.textContent = '🙂';
+  } else {
+    const img = document.createElement('img');
+    img.src = './cido_nido.jpg';   // tuo file immagine
+    img.alt = 'Bot';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.borderRadius = '50%';
+    avatar.appendChild(img);
+  }
 
   const b = document.createElement('div');
   b.className = 'bubble';
