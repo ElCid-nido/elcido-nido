@@ -8,7 +8,7 @@ const leadForm = $('#leadForm');
 
 let KB = [], BIZ = null, lastSubmitAt = 0;
 const RATE_LIMIT_MS = 60000;
-const WORKER_URL = "https://YOURWORKER.workers.dev/"; 
+const WORKER_URL = "https://aurypet.spmighi.workers.dev/"; 
 
 (async function bootstrap(){
   const [faq, biz] = await Promise.all([
