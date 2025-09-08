@@ -10,16 +10,11 @@
   btn.type = "button";
   btn.setAttribute("aria-label", "Apri chat di assistenza");
   Object.assign(btn.style, {
-    position:"fixed", width:"56px", height:"56px",
-    borderRadius:"999px", border:"0", cursor:"pointer",
-    background:color, color:"#fff",
+    position:"fixed", zIndex:"2147483647", width:"56px", height:"56px",
+    borderRadius:"999px", border:"0", cursor:"pointer", background:color, color:"#fff",
     boxShadow:"0 8px 24px rgba(0,0,0,.2)"
   });
-wrap.style.setProperty('z-index','999999998','important'); // subito sotto al bottone
-wrap.style.setProperty('pointer-events','auto','important');
-btn.style.setProperty('z-index','999999999','important'); // <-- forza in cima
-btn.style.setProperty('pointer-events','auto','important');
-  (pos.includes("bottom") ? wrap.style.bottom = "100px" : wrap.style.top = "20px");
+  (pos.includes("bottom")? btn.style.bottom="20px" : btn.style.top="20px");
   (pos.includes("right")? btn.style.right="20px" : btn.style.left="20px");
   btn.textContent = "💬";
   d.body.appendChild(btn);
