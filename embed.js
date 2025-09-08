@@ -26,12 +26,20 @@
   });
   (pos.includes("bottom")? wrap.style.bottom="90px" : wrap.style.top="20px");
   (pos.includes("right")? wrap.style.right="20px" : wrap.style.left="20px");
+  
   const iframe = d.createElement("iframe");
   iframe.src = `${origin}${path}chat.html`;
   iframe.title = "Chat di assistenza";
   iframe.referrerPolicy = "no-referrer";
-  iframe.style.width = "100%"; iframe.style.height = "100%"; iframe.style.border = "0";
-  wrap.appendChild(iframe); d.body.appendChild(wrap);
+  iframe.style.width = "100%"; 
+  iframe.style.height = "100%"; 
+  iframe.style.border = "0";
 
-  btn.addEventListener("click", ()=> wrap.style.display = (wrap.style.display==="none"?"block":"none"));
+  wrap.appendChild(iframe); 
+  d.body.appendChild(wrap);
+
+  btn.addEventListener("click", ()=> 
+    wrap.style.display = (wrap.style.display==="none"?"block":"none")
+  );
 })();
+
